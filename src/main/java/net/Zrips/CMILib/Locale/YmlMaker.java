@@ -10,6 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import net.Zrips.CMILib.CMILib;
+import net.Zrips.CMILib.FileHandler.YamlCanonicalizer;
 import net.Zrips.CMILib.Logs.CMIDebug;
 
 public class YmlMaker {
@@ -65,7 +66,7 @@ public class YmlMaker {
 	    return;
 	}
 	try {
-	    getConfig().save(this.ConfigFile);
+	    YamlCanonicalizer.save((YamlConfiguration) getConfig(), this.ConfigFile);
 	} catch (IOException ex) {
 	    this.plugin.getLogger().log(Level.SEVERE, "Could not save config to " + this.ConfigFile, ex);
 	}

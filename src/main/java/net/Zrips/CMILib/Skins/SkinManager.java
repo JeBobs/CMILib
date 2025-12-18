@@ -25,6 +25,7 @@ import com.mojang.authlib.properties.PropertyMap;
 
 import net.Zrips.CMILib.CMILib;
 import net.Zrips.CMILib.FileHandler.ConfigReader;
+import net.Zrips.CMILib.FileHandler.YamlCanonicalizer;
 import net.Zrips.CMILib.Messages.CMIMessages;
 import net.Zrips.CMILib.Version.Version;
 
@@ -330,7 +331,7 @@ public class SkinManager {
         k.set(uuid + ".lastUpdate", skin.getLastUpdate() == 0L ? null : skin.getLastUpdate());
 
         try {
-            k.save(file);
+            YamlCanonicalizer.save(k, file);
         } catch (IOException e) {
             e.printStackTrace();
         }

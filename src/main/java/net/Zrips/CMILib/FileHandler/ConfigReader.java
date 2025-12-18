@@ -21,6 +21,7 @@ import org.bukkit.plugin.Plugin;
 import com.google.common.io.Files;
 
 import net.Zrips.CMILib.CMILib;
+import net.Zrips.CMILib.FileHandler.YamlCanonicalizer;
 import net.Zrips.CMILib.Messages.CMIMessages;
 import net.Zrips.CMILib.Version.Version;
 
@@ -88,7 +89,7 @@ public class ConfigReader extends YamlConfiguration {
         }
 
         Files.createParentDirs(file);
-        String data = insertComments(saveToString());
+        String data = insertComments(YamlCanonicalizer.canonicalize(this));
         PrintWriter writer = new PrintWriter(file, "UTF-8");
         try {
             writer.write(data);
